@@ -1,5 +1,21 @@
 # phantom-decoder
 
+
+#RotBlauer additions
+
+I had to do some extra install:
+
+Get pip
+
+```
+Kittys-MacBook-Pro:phantom-decoder Kitty$ curl "https://bootstrap.pypa.io/get-pip.py" >get-pip.py
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1488k  100 1488k    0     0  3560k      0 --:--:-- --:--:-- --:--:-- 3562k
+Kittys-MacBook-Pro:phantom-decoder Kitty$ 
+```
+
+
 ### Decode flight record TXT files from DJI GO app
 #### Tested with DJI Phantom 4
 
