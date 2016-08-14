@@ -15,6 +15,19 @@ Kittys-MacBook-Pro:phantom-decoder Kitty$ curl "https://bootstrap.pypa.io/get-pi
 Kittys-MacBook-Pro:phantom-decoder Kitty$ 
 ```
 
+Yuck sudo
+
+```
+easy_install pip
+
+```
+
+```
+pip install -U googlemaps
+```
+
+Then below
+
 
 ### Decode flight record TXT files from DJI GO app
 #### Tested with DJI Phantom 4

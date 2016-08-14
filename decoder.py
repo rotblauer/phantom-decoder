@@ -106,7 +106,7 @@ class GimbalFrame(Frame):
         self.__is_auto_calibration, \
         self.__auto_calibration_result, \
         self.__version, \
-        self.__counter = struct.unpack_from("<hhhBBBBBBI", self.body, 0)
+        self.__counter = struct.unpack_from("<BBBBBBBBBB", self.body, 0)
 
         self.pitch = pitch / 10.0
         self.roll = roll / 10.0
@@ -167,7 +167,8 @@ class BatteryFrame(Frame):
         self.current_pv = current_pv / 1000.0
         self.current = current / 1000.0
         self.voltages = [voltage_cell_1 / 1000.0, voltage_cell_2 / 1000.0, voltage_cell_3 / 1000.0, voltage_cell_4 / 1000.0, voltage_cell_5 / 1000.0, voltage_cell_6 / 1000.0]
-        self.manufacture_date = datetime.date((ord(self.body[-4]) >> 1) + 1980,((ord(self.body[-4]) & 0x1) << 3) | (ord(self.body[-5]) >> 5),ord(self.body[-5]) & 0x1f)
+        self.manufacture_date = datetime.date.today()
+        
         self.temperature = temperature / 10 - 273.15
 
     def __repr__(self):
@@ -345,6 +346,8 @@ def decode_file(path):
         elif frame_type == 15:
             frames.append(Frame15(f))
         else:
+            frames.append(ControllerFrame(f))
+
             frames.append(UnknownFrame(f))
 
 

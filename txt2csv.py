@@ -2,10 +2,12 @@ import decoder
 import os
 import sys
 import googlemaps
-import private # This file must contain maps_api_key
+#import private # This file must contain maps_api_key
 
 # Replace the API key below with a valid API key.
-gmaps = googlemaps.Client(key=private.maps_api_key)
+
+#Below seems to be only used to to get your starting elevation based on lat-long, going to set to 0
+#gmaps = googlemaps.Client(key=private.maps_api_key)
 
 class Bunch:
     def __init__(self, **kwdict):
@@ -48,8 +50,9 @@ def frames_to_lines(frames):
             max_ascent = max(max_altitude,f.ascent)
 
             if start_altitude is None:
-                e = gmaps.elevation((f.latitude, f.longitude))
-                start_altitude = e[0]["elevation"]
+               # e = gmaps.elevation((f.latitude, f.longitude))
+                #start_altitude = e[0]["elevation"]
+                start_altitude = 0
 
         if isinstance(f, decoder.TimeFrame):
 
@@ -76,12 +79,12 @@ def frames_to_lines(frames):
                      last_frames["PositionFrame"].yaw,
                      "FALSE",
                      "FALSE",
-                     last_frames["ControllerFrame"].elevator,
-                     last_frames["ControllerFrame"].aileron,
-                     last_frames["ControllerFrame"].throttle,
-                     last_frames["ControllerFrame"].rudder,
-                     last_frames["GimbalFrame"].yaw,
-                     last_frames["GimbalFrame"].pitch,
+                     #last_frames["ControllerFrame"].elevator,
+                     #last_frames["ControllerFrame"].aileron,
+                     #last_frames["ControllerFrame"].throttle,
+                     #last_frames["ControllerFrame"].rudder,
+                     #last_frames["GimbalFrame"].yaw,
+                     #last_frames["GimbalFrame"].pitch,
                      last_frames["BatteryFrame"].percent,
                      last_frames["BatteryFrame"].voltages[0],
                      last_frames["BatteryFrame"].voltages[1],
